@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Kenangan Senja</title>
+    <!--feathers icon-->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<style>
+    :root{
+        --primary: #b6895b;
+        --bg:#010101;
+    }
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        outline: none;
+        border:none;
+        text-decoration:none;
+    }
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        font-family:'Poppins','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: var(--bg);
+        color:#ffff;
+        /* min-height: 5000px; */
+    }
+    /*Navbar*/
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.4rem 7%;
+        background-color: rgba(1,1,1,0.8);
+        border-bottom: 1px solid #5f4830;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+    }
+    .navbar .navbar-logo{
+        font-size: 2rem;
+        font-weight: 700;
+        color: #ffff;
+        font-style: italic;
+    }
+    .navbar .navbar-logo span{
+        color: var(--primary);
+    }
+    .navbar .navbar-nav a{
+        color: #ffff;
+        display: inline-block;
+        font-size: 1.3rem;
+        margin: 0 1rem;
+    }
+    .navbar .navbar-nav a:hover{
+        color: var(--primary);
+    }
+    .navbar .navbar-nav a::after{
+        content: '';
+        display: block;
+        padding-bottom: 0.5rem;
+        border-bottom: 0.1rem solid var(--primary);
+        transform: scaleX(0);
+        transition: 0.2s linear;
+    }
+    .navbar .navbar-nav a:hover::after{
+        transform: scaleX(1);
+    }
+    .navbar .navbar-extra a{
+        color: #ffff;
+        margin: 0 0.5rem;
+    }
+    .navbar .navbar-extra a:hover{
+        color: #ac8f8f;
+    }
+    /*media queris*/
+    
+    /*laptop*/
+    @media(max-width:1366px) {
+        html {
+            font-size: 75%;
+        }
+    }
+    /*phone*/
+    @media(max-width:450px) {
+        html {
+            font-size: 55%;
+        }
+    }
+    /*Tablet*/
+    @media(max-width:758px) {
+        html {
+            font-size: 62.5%;
+        }
+        /* #humburger-menu{
+            display: inline-block;
+        }
+        .navbar .navbar-nav{
+            position: absolute;
+            top: 100%;
+            right: -100%;
+            background-color: #ffff;
+            width: 30rem;
+            height: 100vh;
+            transition: 0.3s;
+        }
+        .navbar .navbar-nav.active{
+            right: 0;
+        } */
+        .about .row{
+            flex-wrap: wrap;
+        }
+        .about .row .about-img img{
+            height: 24rem;
+            object-fit: cover;
+            object-position: center;
+        }
+        .about .row .content{
+            padding: 0;
+        }
+        .about .row .content h3{
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+        .about .row .content p{
+            font-size: 1.6rem;
+        }
+        .menu p{
+            font-size: 1.2rem;
+        }
+        .contact .row{
+            flex-wrap: wrap;
+        }
+        .contact .row .map{
+            height: 30rem;
+        }
+        .contact .row form{
+            padding-top: 0;
+        }
+    }
+
+    /* hero sectio*/
+    .hero{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-image: url(img/kopi.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    .hero::after{ 
+        content:'';
+        display:block;
+        position:absolute;
+        width:100%;
+        height:30%;
+        bottom: 0;
+        background:linear-gradient(0deg,rgba(1,1,3,1)8%, rgba(255,255,255,0)50%);
+    }
+    .hero .content{
+        padding: 1.4rem;
+        max-width: 60rem;
+    }
+    .hero .content h1{
+        font-size: 5rem;
+        color: #ffff;
+        text-shadow: 1px 1px 3px rgba(1,1,3,0.5);
+        line-height: 1.2;
+    }
+    .hero .content h1 span{
+        color: var(--primary);
+    }
+    .hero .content p{
+        font-size: 1.6rem;
+        margin-top: 0.5rem;
+        line-height: 1.4;
+        font-weight: 100;
+        text-shadow: 1px 1px 3px red;
+    }
+    .hero .content .cta{
+        margin-top: 1rem;
+        display: inline-block;
+        padding: 1rem 3rem;
+        font-size: 1.4rem;
+        color: #ffff;
+        background-color: var(--primary);
+        border-radius: 0.5rem;
+        box-shadow: 1px 1px 3px rgba(1,1,3,0.5);
+    }
+    /*about */
+    .about{
+        padding: 8rem 7% 1.4rem;
+    }
+    .about h1{
+        text-align: center;
+        font-size: 2.6rem;
+        margin-bottom: 3rem;
+    }
+    .about h1 span{
+        color: var(--primary);
+    }
+    .about .row{
+        display: flex;
+    }
+    .about .row .about-img{
+        flex: 1 1 45rem;
+    }
+    .about .row .about-img img{
+        width: 100%;
+    }
+    .about .row .content {
+        flex: 1 1 35rem;
+        padding: 0.1rem;
+    }
+    .about .row ,.content h3{
+        margin-bottom: 0.8rem;
+        font-size: 1.3rem;
+        font-weight: 100;
+        line-height: 1.6rem;
+    }
+    /*menu */
+    .menu{
+        padding: 8rem 7% 1.4rem;
+    }
+    .menu h2{
+        text-align: center;
+        font-size: 2.6rem;
+        margin-bottom: 3rem;
+        margin-bottom: 1rem;
+    }
+    .menu h2 span{
+        color: var(--primary);
+    }
+    .menu p{
+        text-align: center;
+        max-width: 30rem;
+        margin: auto;
+        font-size: 1rem;
+        font-weight: 100;
+        line-height: 1.6rem;
+    }
+    .menu .row{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 5rem;
+        justify-content: center;
+    }
+    .menu .row .menu-card{
+        text-align: center;
+        padding-bottom: 2rem;
+        margin: 2rem;;
+    }
+    .menu .row .menu-card img{
+        border-radius: 50%;
+        width: 100%;
+    }
+    .menu .row .menu-card .menu-card-title{
+        margin: 1rem auto 0.5rem;
+    }
+    /*contact */
+    .contact{
+        padding: 8rem 7% 1.4rem;
+    }
+    .contact .row{
+        display: flex;
+        margin-top: 2rem;
+        background-color: #222;
+        /* flex-wrap: wrap; */
+    }
+    .contact .row .map{
+        flex: 1 1 45rem;
+        width: 100%;
+        object-fit: cover;
+    }
+    .contact .row form{
+        flex: 1 1 45rem;
+        padding: 5rem 2rem;
+        text-align: center;
+    }
+    .contact .row form .input-group{
+        display: flex;
+        align-items: center;
+        margin-top: 2rem;
+        background-color: var(--bg);
+        border: 1px solid #ffff;
+        padding-left: 2rem;
+
+    }
+    .contact .row form .input-group input{
+      width: 100%;
+      padding: 2rem;
+      font-size: 1.7rem;
+      background: none;
+      color: #ffff;
+    }
+    .contact .row form .btn{
+      margin-top: 3rem;
+      display: inline-block;
+      padding: 1rem 3rem;
+      font-size: 1.7rem;
+      background-color: var(--primary);
+      cursor: pointer;
+    }
+    .contact .row form .btn:hover{
+        background-color: #5f4830;
+    }
+    .contact h2{
+        text-align: center;
+        font-size: 2.6rem;
+        margin-bottom: 3rem;
+        margin-bottom: 1rem;
+    }
+    .contact h2 span{
+        color: var(--primary);
+    }
+    .contact p{
+        text-align: center;
+        max-width: 30rem;
+        margin: auto;
+        font-size: 1rem;
+        font-weight: 100;
+        line-height: 1.6rem;
+    }
+    /*footer */
+    footer{
+        background-color: var(--primary);
+        text-align: center;
+        padding: 1rem 0 3rem;
+        margin-top: 3rem;
+        
+    }
+    .socials{
+        padding: 1rem;
+    }
+    footer .socials a{
+        color: #ffff;
+        margin: 1rem;
+    }
+    footer .socials a:hover{
+        color: var(--bg);
+    }
+    footer .links a:hover{
+        color: var(--bg);
+    }
+    footer .links a {
+        color: #ffff;
+        padding: 0.7rem 1rem;
+    }
+    footer .links{
+        margin-bottom: 1.4rem;
+    }
+    footer .credit{
+        font-size: 0.8rem;
+    }
+    footer .credit a{
+        color: var(--bg);
+        font-weight: bold;
+    }
+</style>
+<body>  
+
+    <!--navbar start-->
+    <nav class="navbar">
+        <a href="" class="navbar-logo">Kenangan<span>senja</span></a>
+        <div class="navbar-nav">
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#contact">Kontak</a>
+        </div>
+        <div class="navbar-extra">
+            <a href="" id="search"> <i data-feather="search"></i></a>
+            <a href="" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+            <!-- <a href="" id="humburger-menu"><i data-feather="menu"></i></a> -->
+        </div>
+    </nav>
+    <!--navbar end-->
+
+    <!--Hero Section-->
+    <section class="hero" id="home">
+    <main class="content">
+        <h1>Mari Nikmati Secangkir <span>kopi</span></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum vitae, delectus expedita minus temporibus reprehenderit ab possimus itaque perferendis quisquam quidem ex hic officiis porro doloremque harum blanditiis aut ratione.</p>
+        <a href=""class="cta">Beli Sekarang</a>
+    </main>
+    </section>
+    <!-- End Hero Section-->
+     <!--about section-->
+     <section class="about" id="about">
+        <h1><span>Tentang</span>Kami</h1>
+        <div class="row">
+            <div class="about-img">
+                <img src="img/tentangkami.jpg"  alt="Tentang kami">
+            </div>
+            <div class="content">
+                <h3>Kenapa Memilih kopi kami?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea veniam obcaecati necessitatibus autem atque repellendus.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel optio veritatis odio porro maxime natus veniam doloribus iusto! Vero, suscipit.</p>
+            </div>
+        </div>
+     </section>
+     <!--end about-->
+     <!--Menu-->
+     <section class="menu" id="menu">
+        <h2><span>Menu</span> Kami</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates magni mollitia est sint dolorem inventore eos sunt, impedit id officia quae ipsam deleniti, dolores saepe odio necessitatibus labore tenetur quisquam?</p>
+        <div class="row">
+            <div class="menu-card">
+                <img src="img/menu1.jpg" width="200px" height="200px" alt="Espresso" class="menu-card-img">
+                <h3>-Espresso</h3>
+                <p class="menu-card-pricelist">IDR 15k</p>
+            </div>
+            <div class="menu-card">
+                <img src="img/menu1.jpg" width="200px" height="200px" alt="Espresso" class="menu-card-img">
+                <h3>-Espresso</h3>
+                <p class="menu-card-pricelist">IDR 15k</p>
+            </div>
+            <div class="menu-card">
+                <img src="img/menu1.jpg" width="200px" height="200px" alt="Espresso" class="menu-card-img">
+                <h3>-Espresso</h3>
+                <p class="menu-card-pricelist">IDR 15k</p>
+            </div>
+            <div class="menu-card">
+                <img src="img/menu1.jpg" width="200px" height="200px" alt="Espresso" class="menu-card-img">
+                <h3>-Espresso</h3>
+                <p class="menu-card-pricelist">IDR 15k</p>
+            </div>
+            <div class="menu-card">
+                <img src="img/menu1.jpg" width="200px" height="200px" alt="Espresso" class="menu-card-img">
+                <h3>-Espresso</h3>
+                <p class="menu-card-pricelist">IDR 15k</p>
+            </div>
+                <div class="menu-card">
+                <img src="img/menu1.jpg" width="200px" height="200px" alt="Espresso" class="menu-card-img">
+                <h3>-Espresso</h3>
+                <p class="menu-card-pricelist">IDR 15k</p>
+            </div>
+        </div>
+    </section>
+     <!--end menu-->
+     <!--contact setion-->
+     <section class="contact" id="contact">
+        <h2><span>Kontak</span>Kami</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, asperiores!</p>
+        <div class="row">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3739942466545!2d106.80720550000002!3d-6.2143089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f6adbd77af01%3A0x23abed373d7987d2!2sJakarta%20Convention%20Center!5e0!3m2!1sid!2sid!4v1724500764046!5m2!1sid!2sid" 
+             style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+            <form action="">
+                <div class="input-group">
+                    <i data-feather="user"></i>
+                    <input type="text" placeholder="nama">
+                </div>
+                <div class="input-group">
+                    <i data-feather="mail"></i>
+                    <input type="text" placeholder="email">
+                </div>
+                <div class="input-group">
+                    <i data-feather="phone"></i>
+                    <input type="text" placeholder="no hp">
+                </div>
+                <button type="submit" class="btn">Kirim</button>
+            </form>
+            </div>
+    </section>
+     <!--end section-->
+     <!--footer-->
+     <footer>
+        <div class="socials">
+            <a href=""><i data-feather="instagram"></i></a>
+            <a href=""><i data-feather="twitter"></i></a>
+            <a href=""><i data-feather="facebook"></i></a>
+        </div>
+        <div class="links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="credit">
+            <p>Created by <a href="">HilyaAulia</a> | &copy;2024</p>
+        </div>
+     </footer>
+     <!--end footer-->
+    <!--My style-->
+    <script>
+        feather.replace();
+      </script>
+      <!--My Javascript-->
+      <script src="js/script.js"></script>
+</body>
+</html>
